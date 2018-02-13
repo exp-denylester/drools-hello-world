@@ -1,0 +1,15 @@
+import com.expedia.drools.model.Feature;
+import com.expedia.drools.model.FeatureValidationRequest;
+import org.apache.commons.lang.StringUtils
+
+import java.util.List;
+global com.expedia.drools.model.FeatureValidationResponse response;
+dialect  "mvel"
+
+rule "Features should have a valid contry"
+    when
+        $request : FeatureValidationRequest()
+        $invalidCountryFeature : Feature(StringUtils.isEmpty(country)) from $request.features
+    then
+        response.addError("INV_COUNTRY:" + $invalidCountryFeature);
+end
