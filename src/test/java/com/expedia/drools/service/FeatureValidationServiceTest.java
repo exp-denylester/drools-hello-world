@@ -52,37 +52,7 @@ public class FeatureValidationServiceTest {
       }
     }
 
+    List<String> errors = service.validate(features);
 
-
-    for (int i = 0; i < 5; i++) {
-      StopWatch stopWatch = new StopWatch();
-      List<String> errors = service.validate(features, stopWatch);
-      System.out.println(stopWatch.getTaskInfo()[0].getTimeMillis());
-      //assertEquals(errors.size() ,total - 600);
-    }
-
-
-
-    List<String> errors = new ArrayList<>();
-    //stopWatch.start("loop");
-    features.forEach(f -> {
-      if (StringUtils.isEmpty(f.getCountry())) {
-        errors.add("INV_COUNTRY:" + f.getId());
-      }
-      if (StringUtils.isEmpty(f.getCountry())) {
-      }
-      if (StringUtils.isEmpty(f.getCountry())) {
-      }
-      if (StringUtils.isEmpty(f.getCountry())) {
-      }
-      if (StringUtils.isEmpty(f.getCountry())) {
-      }
-
-    });
-    //stopWatch.stop();
-
-
-    //System.out.println(stopWatch.getTaskInfo()[0].getTimeMillis());
-    //System.out.println(stopWatch.getTaskInfo()[1].getTimeMillis());
   }
 }

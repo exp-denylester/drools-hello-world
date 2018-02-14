@@ -18,14 +18,12 @@ public class FeatureValidationService {
   @Autowired
   private KieContainer kieContainer;
 
-  public List<String> validate(List<Feature> features, StopWatch stopWatch) {
+  public List<String> validate(List<Feature> features) {
     KieSession kieSession = kieContainer.newKieSession();
     FeatureValidationResponse response = new FeatureValidationResponse();
     kieSession.setGlobal("response", response);
     kieSession.insert(new FeatureValidationRequest(features));
-    stopWatch.start("drools");
     kieSession.fireAllRules();
-    stopWatch.stop();
     kieSession.dispose();
     return response.getErrors();
   }
