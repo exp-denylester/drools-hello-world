@@ -36,18 +36,18 @@ public class FeatureValidationServiceTest {
   @Test
   public void testValidation() {
     List<Feature> features = new LinkedList<>();
-    int total = 1000000;
+    int total = 100;
     for (int i = 0; i < total; i++) {
       Feature feature = new Feature();
       feature.setId(RandomUtils.nextLong(0, 100));
       features.add(feature);
 
 
-      if (i < 500) {
+      if (i < 50) {
         feature.setCountry("CAN");
       }
 
-      if (i >= 500 && i < 600) {
+      if (i >= 50 && i < 60) {
         feature.setName("Hotel Name " + i);
       }
     }
